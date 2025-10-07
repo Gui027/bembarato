@@ -21,7 +21,6 @@
         dataLayer.push(arguments);
       }
       gtag("js", new Date());
-
       gtag("config", "AW-17608635428");
     </script>
 
@@ -48,10 +47,10 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: space-between; /* Alterado para distribuir o espaço adequadamente */
+        justify-content: space-between;
         min-height: 100vh;
         padding: 40px 20px;
-        padding-bottom: 40px; /* Ajustado o espaçamento inferior */
+        padding-bottom: 40px;
         transition: background 0.3s ease;
       }
 
@@ -60,13 +59,11 @@
         width: 150px;
         height: 150px;
         margin-top: 40px;
-        margin-bottom: 20px; /* Garantir espaçamento adequado */
+        margin-bottom: 20px;
       }
-
       .profile:hover {
         transform: scale(1.1);
       }
-
       .profile img {
         width: 100%;
         height: 100%;
@@ -76,12 +73,10 @@
         box-shadow: 0 0 20px rgba(0, 170, 255, 0.5);
         transition: box-shadow 0.3s ease, transform 0.3s ease;
       }
-
       .profile:hover img {
         box-shadow: 0 0 30px rgba(0, 170, 255, 0.8);
         transform: rotate(5deg);
       }
-
       .verified {
         position: absolute;
         bottom: 5px;
@@ -92,10 +87,9 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 30px; /* Ajuste o tamanho */
-        height: 30px; /* Ajuste o tamanho */
+        width: 30px;
+        height: 30px;
       }
-
       .verified::before {
         content: "✔";
         font-size: 16px;
@@ -112,7 +106,6 @@
         color: transparent;
         transition: color 0.3s ease;
       }
-
       h1:hover {
         color: #00aaff;
       }
@@ -126,7 +119,6 @@
         line-height: 1.5;
         transition: color 0.3s ease;
       }
-
       p:hover {
         color: #fff;
       }
@@ -145,13 +137,13 @@
         box-shadow: 0 0 15px rgba(37, 211, 102, 0.6);
         transition: all 0.3s ease;
       }
-
       .whatsapp-btn:hover {
         background: #1ebe5d;
         transform: scale(1.05);
         box-shadow: 0 0 25px rgba(37, 211, 102, 0.8);
       }
 
+      /* === SEU FOOTER (inalterado) === */
       footer {
         text-align: center;
         font-size: 0.8rem;
@@ -160,7 +152,6 @@
         margin-top: auto; /* Garante que o rodapé fique na parte inferior */
         margin-bottom: 20px; /* Ajusta o espaçamento inferior */
       }
-
       footer:hover {
         color: #fff;
       }
@@ -172,21 +163,19 @@
         width: 100%;
         max-width: 1000px;
       }
-
       .projects-section h2 {
         font-size: 2rem;
         margin-bottom: 20px;
         color: #fff;
         text-transform: uppercase;
       }
-
       .projects-carousel {
         display: flex;
         overflow: hidden;
         position: relative;
         gap: 16px;
+        animation: scrollCarousel 12s infinite linear;
       }
-
       .project-card {
         min-width: 280px;
         height: 180px;
@@ -196,23 +185,15 @@
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         position: relative;
       }
-
       .project-card img {
         width: 100%;
         height: 100%;
         object-fit: cover;
       }
-
       .project-card:hover {
         transform: scale(1.05);
         transition: transform 0.3s ease;
       }
-
-      /* Animação automática do carrossel */
-      .projects-carousel {
-        animation: scrollCarousel 12s infinite linear;
-      }
-
       @keyframes scrollCarousel {
         0% {
           transform: translateX(0);
@@ -235,28 +216,87 @@
         body {
           padding: 20px;
         }
-
         h1 {
           font-size: 1.8rem;
         }
-
         p {
           font-size: 1.2rem;
         }
-
         .whatsapp-btn {
           padding: 12px 22px;
           font-size: 1.4rem;
         }
-
         .projects-carousel {
           flex-direction: column;
           align-items: center;
         }
-
         .project-card {
           min-width: 90%;
           margin-bottom: 20px;
+        }
+      }
+
+      /* === POPUP PROMOCIONAL (novo) === */
+      .exit-popup {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.8);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+      }
+      .exit-popup-content {
+        background: #111;
+        border: 2px solid #00ffcc;
+        border-radius: 20px;
+        padding: 28px;
+        text-align: center;
+        max-width: 420px;
+        width: 92%;
+        box-shadow: 0 0 30px rgba(0, 255, 204, 0.6);
+        animation: pop 0.35s ease;
+      }
+      .exit-popup-content h2 {
+        font-size: 1.6rem;
+        color: #00ffcc;
+        margin-bottom: 12px;
+      }
+      .exit-popup-content p {
+        color: #fff;
+        margin: 0 auto 18px;
+        max-width: 32ch;
+      }
+      .cta {
+        display: inline-block;
+        background: #25d366;
+        color: #fff;
+        padding: 12px 22px;
+        border-radius: 28px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: transform 0.2s ease, opacity 0.2s ease;
+      }
+      .cta:hover {
+        transform: scale(1.05);
+        opacity: 0.95;
+      }
+      .close-btn {
+        margin-top: 12px;
+        background: none;
+        border: none;
+        color: #bbb;
+        cursor: pointer;
+        font-size: 0.95rem;
+      }
+      @keyframes pop {
+        from {
+          transform: scale(0.9);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
         }
       }
     </style>
@@ -281,5 +321,89 @@
     </a>
 
     <footer>© 2025 - Feito com 💙 por Guilherme Rodrigues</footer>
+
+    <!-- POPUP DE SAÍDA (novo) -->
+    <div
+      class="exit-popup"
+      id="exitPopup"
+      aria-hidden="true"
+      role="dialog"
+      aria-labelledby="exitTitle"
+    >
+      <div class="exit-popup-content">
+        <h2 id="exitTitle">😱 Calma lá!</h2>
+        <p>
+          Eu faço seu site <strong>a preço de banana 🍌</strong>!<br />
+          Tem certeza que quer sair sem pegar a promoção?
+        </p>
+        <a
+          class="cta"
+          href="https://wa.me/5527996936715"
+          target="_blank"
+          rel="noopener"
+        >
+          💬 Falar comigo agora!
+        </a>
+        <br />
+        <button class="close-btn" type="button" onclick="fecharPopup()">
+          Não, obrigado 😅
+        </button>
+      </div>
+    </div>
+
+    <script>
+      // --- Exit intent + back redirect (sem alterar footer) ---
+      let popupMostrado = false;
+
+      function mostrarPopup() {
+        if (popupMostrado) return;
+        const el = document.getElementById("exitPopup");
+        if (!el) return;
+        el.style.display = "flex";
+        el.setAttribute("aria-hidden", "false");
+        popupMostrado = true;
+      }
+      function fecharPopup() {
+        const el = document.getElementById("exitPopup");
+        if (!el) return;
+        el.style.display = "none";
+        el.setAttribute("aria-hidden", "true");
+      }
+
+      // 1) Exit intent por mouse (desktop)
+      document.addEventListener("mouseleave", (e) => {
+        if (e.clientY <= 10) mostrarPopup();
+      });
+
+      // 2) Back redirect: empurra um estado e intercepta 'voltar'
+      (function setupBackIntercept() {
+        try {
+          history.pushState({ exitGuard: true }, "");
+          window.addEventListener("popstate", function (ev) {
+            if (!popupMostrado) {
+              mostrarPopup();
+              // empurra de novo para manter na página até a escolha do usuário
+              history.pushState({ exitGuard: true }, "");
+            }
+          });
+        } catch (err) {
+          /* silencioso */
+        }
+      })();
+
+      // 3) (Opcional) Inatividade no mobile
+      let idleTimer;
+      const resetIdle = () => {
+        clearTimeout(idleTimer);
+        idleTimer = setTimeout(mostrarPopup, 45000);
+      };
+      ["touchstart", "scroll", "keydown", "mousemove"].forEach((evt) =>
+        window.addEventListener(evt, resetIdle)
+      );
+      resetIdle();
+
+      // Observação: 'beforeunload' mostra um aviso nativo do navegador e impede modal custom.
+      // Para manter a UX limpa, não usamos aqui.
+    </script>
   </body>
 </html>
