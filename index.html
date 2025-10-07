@@ -1,289 +1,255 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Bem Barato — ofertas, cursos e produtos | bembarato.shop</title>
-  <meta name="description" content="bembarato.shop — um domínio genérico para vender cursos, produtos e serviços. Página inicial simples, rápida e com links para /curso e /produto.">
-  <meta name="theme-color" content="#111827">
-  <meta property="og:title" content="Bem Barato — tudo bem barato, em um só lugar">
-  <meta property="og:description" content="Use bembarato.shop/curso e /produto para divulgar o que quiser.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://bembarato.shop/">
-  <meta property="og:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='630'%3E%3Crect width='100%25' height='100%25' fill='%23111827'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23ffffff' font-family='Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='64'%3Ebembarato.shop%3C/text%3E%3C/svg%3E">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23111827'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-size='34' font-family='Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif' fill='white'%3EBB%3C/text%3E%3C/svg%3E">
-  <style>
-    :root {
-      --bg: #0b1220;
-      --card: #0f172a;
-      --muted: #94a3b8;
-      --text: #e5e7eb;
-      --brand: #22c55e; /* verde */
-      --brand-2: #16a34a;
-      --ring: rgba(34,197,94,.35);
-      --shadow: 0 15px 40px rgba(0,0,0,.35);
-      --radius: 16px;
-      --radius-sm: 12px;
-      --radius-lg: 24px;
-    }
-    * { box-sizing: border-box; }
-    html, body {
-      margin: 0;
-      color: var(--text);
-      background: radial-gradient(1200px 600px at 10% -10%, #1f2937 0%, transparent 60%),
-                  radial-gradient(1000px 500px at 100% 0%, #052e1b 0%, transparent 60%),
-                  var(--bg);
-      font: 16px/1.6 Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
-      text-rendering: optimizeLegibility;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-    a { color: var(--text); text-decoration: none; }
-    .container { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 20px; }
-    .nav {
-      position: sticky; top: 0; z-index: 50;
-      backdrop-filter: blur(10px);
-      background: rgba(11,18,32,.5);
-      border-bottom: 1px solid rgba(148,163,184,.15);
-    }
-    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
-    .brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: .2px; }
-    .brand-logo {
-      display:inline-grid; place-items:center; width: 36px; height: 36px;
-      background: linear-gradient(135deg, var(--brand), var(--brand-2));
-      color:#08120b; border-radius: 10px; font-weight: 900;
-      box-shadow: 0 10px 25px rgba(34,197,94,.35);
-    }
-    .brand span { font-size: 20px; text-transform: lowercase; }
-    .badge { font-size: 11px; padding: 2px 8px; border-radius: 999px; border: 1px solid rgba(148,163,184,.25); color: var(--muted); }
-    .nav-cta a {
-      border: 1px solid rgba(148,163,184,.25);
-      padding: 10px 14px; border-radius: 12px; font-weight: 600; display:inline-flex; gap:8px; align-items:center;
-    }
-    .nav-cta a:hover { border-color: rgba(255,255,255,.3); transform: translateY(-1px); transition: .15s ease; }
-    .hero { padding: 72px 0 32px; text-align: center; }
-    .hero h1 { font-size: clamp(32px, 5vw, 56px); line-height: 1.1; margin: 10px 0 12px; }
-    .hero p { color: var(--muted); font-size: clamp(15px, 2.5vw, 18px); margin: 0 auto 22px; max-width: 700px; }
-    .cta-row { display:flex; gap:12px; justify-content:center; flex-wrap: wrap; margin: 18px 0 0; }
-    .btn {
-      display:inline-flex; align-items:center; gap:10px; font-weight: 700;
-      padding: 12px 18px; border-radius: 14px; border: 1px solid transparent;
-      background: linear-gradient(135deg, var(--brand), var(--brand-2));
-      color:#041007; box-shadow: 0 12px 30px var(--ring);
-    }
-    .btn:hover { transform: translateY(-1px); box-shadow: 0 16px 40px var(--ring); transition: .15s ease; }
-    .btn.ghost {
-      background: transparent; color: var(--text);
-      border-color: rgba(148,163,184,.25); box-shadow: none; font-weight: 600;
-    }
-    .btn.ghost:hover { border-color: rgba(255,255,255,.35); }
-    .search {
-      margin: 28px auto 0; max-width: 640px; display:flex; gap:10px; padding:10px;
-      background: rgba(255,255,255,.03); border: 1px solid rgba(148,163,184,.18); border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
-    .search input {
-      flex:1; background: transparent; border: 0; outline: none; color: var(--text);
-      font-size: 16px; padding: 12px 12px;
-    }
-    .search button { white-space: nowrap; }
-    .section { padding: 40px 0; }
-    .cards {
-      display:grid; grid-template-columns: repeat(12, 1fr); gap: 16px; margin-top: 18px;
-    }
-    .card {
-      grid-column: span 4; min-height: 160px; border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
-      border: 1px solid rgba(148,163,184,.18);
-      box-shadow: var(--shadow); padding: 20px; display:flex; flex-direction:column; justify-content:space-between;
-    }
-    .card h3 { margin: 0 0 6px; font-size: 22px; }
-    .card p { margin: 0; color: var(--muted); }
-    .card a { margin-top: 14px; font-weight: 700; display:inline-flex; align-items:center; gap:8px; color: var(--brand); }
-    .card:hover { transform: translateY(-2px); transition:.15s ease; border-color: rgba(255,255,255,.28); }
-    .steps {
-      display:grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 12px;
-    }
-    .step {
-      background: rgba(255,255,255,.03); border: 1px solid rgba(148,163,184,.18); border-radius: var(--radius);
-      padding: 18px; box-shadow: var(--shadow);
-    }
-    .step strong { display:block; font-size: 15px; margin-bottom: 6px; }
-    .quick-links { display:grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 14px; }
-    .q {
-      display:flex; align-items:center; justify-content:space-between; gap:12px;
-      background: rgba(255,255,255,.03); border: 1px solid rgba(148,163,184,.18); border-radius: 12px;
-      padding: 12px 14px;
-    }
-    .q span { color: var(--muted); }
-    .news {
-      background: linear-gradient(180deg, rgba(34,197,94,.08), transparent); border-top: 1px dashed rgba(148,163,184,.25);
-      border-bottom: 1px dashed rgba(148,163,184,.25);
-    }
-    .newsletter {
-      display:flex; gap:10px; max-width: 600px; margin: 8px auto 0;
-      background: rgba(255,255,255,.03); border: 1px solid rgba(148,163,184,.18); border-radius: var(--radius);
-      padding: 10px; box-shadow: var(--shadow);
-    }
-    .newsletter input {
-      flex:1; border:0; background:transparent; color:var(--text); padding: 12px;
-      outline: none;
-    }
-    .newsletter button { white-space: nowrap; }
-    .footer {
-      padding: 36px 0 60px; color: var(--muted); border-top: 1px solid rgba(148,163,184,.15);
-    }
-    .footer .grid { display:grid; grid-template-columns: 1fr auto; gap: 16px; align-items:center; }
-    .social { display:flex; gap: 10px; }
-    .social a {
-      border: 1px solid rgba(148,163,184,.25); border-radius: 10px; padding: 8px 10px;
-    }
-    /* Responsive */
-    @media (max-width: 900px) {
-      .card { grid-column: span 6; }
-      .quick-links { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 640px) {
-      .nav-inner { height: 60px; }
-      .cards { grid-template-columns: repeat(6, 1fr); }
-      .card { grid-column: span 6; }
-      .steps { grid-template-columns: 1fr; }
-      .cta-row { flex-direction: column; }
-      .newsletter, .search { flex-direction: column; }
-    }
-  </style>
-</head>
-<body>
-  <!-- Navegação -->
-  <header class="nav">
-    <div class="container nav-inner">
-      <a class="brand" href="/" aria-label="Página inicial bembarato.shop">
-        <span class="brand-logo">BB</span>
-        <span>bem barato</span>
-        <span class="badge">.shop</span>
-      </a>
-      <nav class="nav-cta">
-        <a href="#ofertas" aria-label="Ir para ofertas">Ver ofertas</a>
-      </nav>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Seu Site Pessoal</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        background: linear-gradient(180deg, #0f0f0f, #1c1c1c);
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between; /* Alterado para distribuir o espaço adequadamente */
+        min-height: 100vh;
+        padding: 40px 20px;
+        padding-bottom: 40px; /* Ajustado o espaçamento inferior */
+        transition: background 0.3s ease;
+      }
+
+      .profile {
+        position: relative;
+        width: 150px;
+        height: 150px;
+        margin-top: 40px;
+        margin-bottom: 20px; /* Garantir espaçamento adequado */
+      }
+
+      .profile:hover {
+        transform: scale(1.1);
+      }
+
+      .profile img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 3px solid #00aaff;
+        box-shadow: 0 0 20px rgba(0, 170, 255, 0.5);
+        transition: box-shadow 0.3s ease, transform 0.3s ease;
+      }
+
+      .profile:hover img {
+        box-shadow: 0 0 30px rgba(0, 170, 255, 0.8);
+        transform: rotate(5deg);
+      }
+
+      .verified {
+        position: absolute;
+        bottom: 5px;
+        right: 10px;
+        background-color: #0095f6;
+        border-radius: 50%;
+        padding: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px; /* Ajuste o tamanho */
+        height: 30px; /* Ajuste o tamanho */
+      }
+
+      .verified::before {
+        content: "✔";
+        font-size: 16px;
+        color: white;
+        line-height: 1;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+        margin-top: 25px;
+        text-align: center;
+        background: linear-gradient(135deg, #00aaff, #00ffcc);
+        -webkit-background-clip: text;
+        color: transparent;
+        transition: color 0.3s ease;
+      }
+
+      h1:hover {
+        color: #00aaff;
+      }
+
+      p {
+        text-align: center;
+        font-size: 1rem;
+        color: #bcbcbc;
+        margin-top: 10px;
+        max-width: 300px;
+        line-height: 1.5;
+        transition: color 0.3s ease;
+      }
+
+      p:hover {
+        color: #fff;
+      }
+
+      .whatsapp-btn {
+        display: inline-block;
+        margin-top: 30px;
+        padding: 14px 28px;
+        border: none;
+        border-radius: 50px;
+        background: #25d366;
+        color: white;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1.1rem;
+        box-shadow: 0 0 15px rgba(37, 211, 102, 0.6);
+        transition: all 0.3s ease;
+      }
+
+      .whatsapp-btn:hover {
+        background: #1ebe5d;
+        transform: scale(1.05);
+        box-shadow: 0 0 25px rgba(37, 211, 102, 0.8);
+      }
+
+      footer {
+        text-align: center;
+        font-size: 0.8rem;
+        color: #777;
+        transition: color 0.3s ease;
+        margin-top: auto; /* Garante que o rodapé fique na parte inferior */
+        margin-bottom: 20px; /* Ajusta o espaçamento inferior */
+      }
+
+      footer:hover {
+        color: #fff;
+      }
+
+      /* Seção de Projetos com carrossel automático */
+      .projects-section {
+        margin-top: 60px;
+        text-align: center;
+        width: 100%;
+        max-width: 1000px;
+      }
+
+      .projects-section h2 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        color: #fff;
+        text-transform: uppercase;
+      }
+
+      .projects-carousel {
+        display: flex;
+        overflow: hidden;
+        position: relative;
+        gap: 16px;
+      }
+
+      .project-card {
+        min-width: 280px;
+        height: 180px;
+        background: #333;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        position: relative;
+      }
+
+      .project-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .project-card:hover {
+        transform: scale(1.05);
+        transition: transform 0.3s ease;
+      }
+
+      /* Animação automática do carrossel */
+      .projects-carousel {
+        animation: scrollCarousel 12s infinite linear;
+      }
+
+      @keyframes scrollCarousel {
+        0% {
+          transform: translateX(0);
+        }
+        25% {
+          transform: translateX(-100%);
+        }
+        50% {
+          transform: translateX(-200%);
+        }
+        75% {
+          transform: translateX(-300%);
+        }
+        100% {
+          transform: translateX(-400%);
+        }
+      }
+
+      @media (max-width: 600px) {
+        body {
+          padding: 20px;
+        }
+
+        h1 {
+          font-size: 1.5rem;
+        }
+
+        p {
+          font-size: 0.9rem;
+        }
+
+        .whatsapp-btn {
+          padding: 12px 22px;
+          font-size: 1rem;
+        }
+
+        .projects-carousel {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .project-card {
+          min-width: 90%;
+          margin-bottom: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="profile">
+      <img
+        src="https://i.postimg.cc/HLGgKCmp/539426617-18521138398025272-112389399020763288-n.jpg"
+        alt="Foto de Perfil"
+      />
+      <div class="verified"></div>
     </div>
-  </header>
 
-  <!-- Hero -->
-  <section class="hero container">
-    <p class="badge" aria-hidden="true">bem-vindo(a) 👋</p>
-    <h1>Tudo <span style="background:linear-gradient(135deg,var(--brand),var(--brand-2)); -webkit-background-clip:text; background-clip:text; color:transparent;">bem barato</span>, em um só lugar.</h1>
-    <p>Use <strong>bembarato.shop/curso</strong> e <strong>/produto</strong> para divulgar qualquer coisa: do seu infoproduto ao item físico da sua loja. Esta é a “recepção” para quem chega pela página inicial.</p>
+    <h1>Guilherme Rodrigues</h1>
+    <p>
+      Crio seu site com o melhor preço! Posso clonar, modernizar e deixar tudo
+      pronto rapidinho. Qualidade e economia em um só lugar. 🚀
+    </p>
 
-    <form class="search" role="search" aria-label="Buscar no site" action="/buscar" method="GET">
-      <input type="search" name="q" placeholder="O que você procura? exemplo: curso de marketing, fone Bluetooth…" aria-label="Buscar termo">
-      <button class="btn" type="submit">Buscar</button>
-    </form>
+    <a class="whatsapp-btn" href="https://wa.me/5527996936715" target="_blank">
+      💬 Falar no WhatsApp
+    </a>
 
-    <div class="cta-row">
-      <a class="btn" href="#ofertas">Ver ofertas</a>
-      <a class="btn ghost" href="https://wa.me/55XXXXXXXXXX" target="_blank" rel="noopener">Falar no WhatsApp</a>
-    </div>
-    <small style="display:block; color:var(--muted); margin-top:8px">Troque o número no link do WhatsApp por um seu.</small>
-  </section>
-
-  <!-- Cartões principais -->
-  <section id="ofertas" class="section container">
-    <h2 style="margin:0 0 8px">Comece por aqui</h2>
-    <p style="color:var(--muted); margin:0 0 8px">Links rápidos para as suas rotas mais usadas.</p>
-    <div class="cards">
-      <article class="card">
-        <div>
-          <h3>Cursos</h3>
-          <p>Divulgue seus treinamentos usando URLs como <strong>/curso/nome-do-curso</strong>.</p>
-        </div>
-        <a href="/curso">Ir para /curso →</a>
-      </article>
-      <article class="card">
-        <div>
-          <h3>Produtos</h3>
-          <p>Venda itens físicos ou digitais com rotas como <strong>/produto/nome-do-produto</strong>.</p>
-        </div>
-        <a href="/produto">Ir para /produto →</a>
-      </article>
-      <article class="card">
-        <div>
-          <h3>Serviços</h3>
-          <p>Ofereça consultorias e pacotes usando <strong>/servico/nome-do-servico</strong>.</p>
-        </div>
-        <a href="/servico">Ir para /servico →</a>
-      </article>
-    </div>
-  </section>
-
-  <!-- Como funciona -->
-  <section class="section container">
-    <h2 style="margin:0 0 8px">Como funciona</h2>
-    <div class="steps">
-      <div class="step">
-        <strong>1) Crie sua página</strong>
-        <span>Publique sua landing em <code>/curso/…</code> ou <code>/produto/…</code> do jeito que preferir.</span>
-      </div>
-      <div class="step">
-        <strong>2) Divulgue o link curto</strong>
-        <span>Compartilhe nas redes, anúncios ou WhatsApp. Simples de lembrar e escrever.</span>
-      </div>
-      <div class="step">
-        <strong>3) Traga quem se perdeu</strong>
-        <span>Se alguém chegar à raiz <code>/</code>, cai aqui na “recepção” com novas ofertas e atalhos.</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- Links rápidos -->
-  <section class="section container">
-    <h2 style="margin:0 0 8px">Atalhos úteis</h2>
-    <div class="quick-links" role="list">
-      <a class="q" role="listitem" href="/curso/marketing-digital">
-        <strong>/curso/marketing-digital</strong><span>Exemplo</span>
-      </a>
-      <a class="q" role="listitem" href="/produto/fone-bluetooth">
-        <strong>/produto/fone-bluetooth</strong><span>Exemplo</span>
-      </a>
-      <a class="q" role="listitem" href="/servico/consultoria">
-        <strong>/servico/consultoria</strong><span>Exemplo</span>
-      </a>
-      <a class="q" role="listitem" href="/kit/volta-as-aulas">
-        <strong>/kit/volta-as-aulas</strong><span>Exemplo</span>
-      </a>
-    </div>
-  </section>
-
-  <!-- Newsletter / captura -->
-  <section class="section container news">
-    <h2 style="margin:0 0 8px">Receba ofertas (opcional)</h2>
-    <p style="color:var(--muted); margin:0 0 12px">Cole um serviço de formulário no <em>action</em> ou use <code>mailto:</code> para começar rápido.</p>
-    <form class="newsletter" action="mailto:contato@seu-dominio.com" method="POST" enctype="text/plain">
-      <input type="email" name="email" placeholder="Seu e-mail" required aria-label="Seu e-mail">
-      <button class="btn" type="submit">Quero receber</button>
-    </form>
-    <small style="display:block; color:var(--muted); margin-top:8px">Troque o e-mail acima por um seu ou integre com qualquer serviço.</small>
-  </section>
-
-  <!-- Rodapé -->
-  <footer class="footer">
-    <div class="container grid">
-      <div>
-        <strong>bem barato</strong> <span class="badge">.shop</span>
-        <div style="margin-top:6px">© <span id="year">2025</span> — Todos os direitos reservados.</div>
-      </div>
-      <div class="social">
-        <a href="/sobre">Sobre</a>
-        <a href="/contato">Contato</a>
-        <a href="/politica-de-privacidade">Privacidade</a>
-        <a href="/termos">Termos</a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Script mínimo (opcional) -->
-  <script>
-    // Atualiza o ano no rodapé
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-</body>
+    <footer>© 2025 - Feito com 💙 por Guilherme Rodrigues</footer>
+  </body>
 </html>
