@@ -49,8 +49,7 @@
         align-items: center;
         justify-content: space-between;
         min-height: 100vh;
-        padding: 40px 20px;
-        padding-bottom: 40px;
+        padding: 40px 20px 40px;
         transition: background 0.3s ease;
       }
 
@@ -143,20 +142,19 @@
         box-shadow: 0 0 25px rgba(37, 211, 102, 0.8);
       }
 
-      /* === SEU FOOTER (inalterado) === */
       footer {
         text-align: center;
         font-size: 0.8rem;
         color: #777;
         transition: color 0.3s ease;
-        margin-top: auto; /* Garante que o rodapé fique na parte inferior */
-        margin-bottom: 20px; /* Ajusta o espaçamento inferior */
+        margin-top: auto;
+        margin-bottom: 20px;
       }
       footer:hover {
         color: #fff;
       }
 
-      /* Seção de Projetos com carrossel automático */
+      /* Carrossel (inalterado) */
       .projects-section {
         margin-top: 60px;
         text-align: center;
@@ -236,7 +234,7 @@
         }
       }
 
-      /* === POPUP PROMOCIONAL (novo) === */
+      /* === POPUPS === */
       .exit-popup {
         position: fixed;
         inset: 0;
@@ -299,6 +297,65 @@
           opacity: 1;
         }
       }
+
+      /* === MODAL 2 (Oferta R$50) === */
+      .exit-popup-content.final-offer {
+        border: 2px solid transparent;
+        background: linear-gradient(#0b0b0b, #0b0b0b) padding-box,
+          linear-gradient(135deg, #ff0066, #ffcc00) border-box; /* borda neon degradê */
+        box-shadow: 0 0 40px rgba(255, 0, 102, 0.5),
+          0 0 60px rgba(255, 204, 0, 0.4);
+      }
+      .final-offer h2 {
+        color: #ffcc00;
+        font-size: 1.8rem;
+      }
+      .price-badge {
+        display: inline-block;
+        margin: 10px 0 16px;
+        padding: 8px 18px;
+        border-radius: 999px;
+        background: linear-gradient(135deg, #ff0066, #ff4d4d, #ffcc00);
+        color: #0b0b0b;
+        font-weight: 900;
+        font-size: 1.2rem;
+        text-shadow: 0 1px rgba(255, 255, 255, 0.2);
+        box-shadow: 0 6px 20px rgba(255, 0, 102, 0.5);
+        letter-spacing: 0.5px;
+      }
+      .cta-50 {
+        display: inline-block;
+        margin-top: 8px;
+        background: linear-gradient(135deg, #00ff99, #00ccff);
+        color: #0b0b0b;
+        padding: 12px 22px;
+        border-radius: 28px;
+        font-weight: 900;
+        text-decoration: none;
+        box-shadow: 0 6px 22px rgba(0, 255, 170, 0.4);
+      }
+      .cta-50:hover {
+        transform: scale(1.05);
+        opacity: 0.95;
+      }
+      .btn-ghost {
+        margin-top: 10px;
+        background: none;
+        border: 1px dashed #888;
+        color: #bbb;
+        cursor: pointer;
+        border-radius: 10px;
+        padding: 8px 14px;
+      }
+      .big-offer {
+        display: inline-block;
+        font-size: 1.8rem; /* maior que o texto normal */
+        color: #00ffcc; /* mesmo tom neon usado nas bordas */
+        text-shadow: 0 0 15px rgba(0, 255, 204, 0.8),
+          0 0 25px rgba(0, 170, 255, 0.6);
+        font-weight: 800;
+        letter-spacing: 0.5px;
+      }
     </style>
   </head>
   <body>
@@ -316,13 +373,13 @@
       pronto rapidinho. Qualidade e economia em um só lugar. 🚀
     </p>
 
-    <a class="whatsapp-btn" href="https://wa.me/5527996936715" target="_blank">
-      💬 Falar no WhatsApp
-    </a>
+    <a class="whatsapp-btn" href="https://wa.me/5527996936715" target="_blank"
+      >💬 Falar no WhatsApp</a
+    >
 
     <footer>© 2025 - Feito com 💙 por Guilherme Rodrigues</footer>
 
-    <!-- POPUP DE SAÍDA (novo) -->
+    <!-- MODAL 1 -->
     <div
       class="exit-popup"
       id="exitPopup"
@@ -341,69 +398,156 @@
           href="https://wa.me/5527996936715"
           target="_blank"
           rel="noopener"
-        >
-          💬 Falar comigo agora!
-        </a>
-        <br />
-        <button class="close-btn" type="button" onclick="fecharPopup()">
+          >💬 Falar comigo agora!</a
+        ><br />
+        <!-- IMPORTANTE: este botão agora abre o MODAL 2 -->
+        <button class="close-btn" type="button" onclick="permitirSair()">
           Não, obrigado 😅
         </button>
       </div>
     </div>
 
+    <!-- MODAL 2 (Oferta final R$50) -->
+    <div
+      class="exit-popup"
+      id="exitPopup2"
+      aria-hidden="true"
+      role="dialog"
+      aria-labelledby="exitTitle2"
+    >
+      <div class="exit-popup-content">
+        <h2 id="exitTitle2">🔥 Oferta Final!</h2>
+        <p>
+          Última chance: <br />
+          <strong class="big-offer">SITE COMPLETO por R$ 50 🚀</strong
+          ><br /><br />
+          Eu entrego rápido, bonito e otimizado.<br />
+          Quer aproveitar agora?
+        </p>
+        <a
+          class="cta"
+          href="https://wa.me/5527996936715?text=Ol%C3%A1%20Guilherme!%20Quero%20aproveitar%20a%20oferta%20de%20SITE%20por%20R%24%2050.%20Podemos%20come%C3%A7ar%3F"
+          target="_blank"
+          rel="noopener"
+          >✅ Quero por R$ 50</a
+        >
+        <br />
+        <button class="close-btn" type="button" onclick="sairDeVerdade()">
+          Sair mesmo
+        </button>
+      </div>
+    </div>
+
     <script>
-      // --- Exit intent + back redirect (sem alterar footer) ---
-      let popupMostrado = false;
+      (function () {
+        const safe =
+          (fn) =>
+          (...a) => {
+            try {
+              return fn(...a);
+            } catch (e) {}
+          };
 
-      function mostrarPopup() {
-        if (popupMostrado) return;
-        const el = document.getElementById("exitPopup");
-        if (!el) return;
-        el.style.display = "flex";
-        el.setAttribute("aria-hidden", "false");
-        popupMostrado = true;
-      }
-      function fecharPopup() {
-        const el = document.getElementById("exitPopup");
-        if (!el) return;
-        el.style.display = "none";
-        el.setAttribute("aria-hidden", "true");
-      }
+        const isMobile = () =>
+          /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|Mobile/i.test(
+            navigator.userAgent
+          ) ||
+          (window.matchMedia &&
+            window.matchMedia("(max-width: 768px)").matches);
 
-      // 1) Exit intent por mouse (desktop)
-      document.addEventListener("mouseleave", (e) => {
-        if (e.clientY <= 10) mostrarPopup();
-      });
+        let modalAberto = false;
+        let etapa = 0; // 0 = nenhum, 1 = modal1, 2 = modal2
+        let backTrapAtiva = false;
+        let janelaDeGracaAte = 0;
 
-      // 2) Back redirect: empurra um estado e intercepta 'voltar'
-      (function setupBackIntercept() {
-        try {
-          history.pushState({ exitGuard: true }, "");
-          window.addEventListener("popstate", function (ev) {
-            if (!popupMostrado) {
-              mostrarPopup();
-              // empurra de novo para manter na página até a escolha do usuário
-              history.pushState({ exitGuard: true }, "");
-            }
-          });
-        } catch (err) {
-          /* silencioso */
-        }
+        const $ = (id) => document.getElementById(id);
+
+        // ---- abrir/fechar genérico ----
+        const abrir = safe(function (qual) {
+          const id = qual === 1 ? "exitPopup" : "exitPopup2";
+          const el = $(id);
+          if (!el) return;
+          el.style.display = "flex";
+          el.setAttribute("aria-hidden", "false");
+          modalAberto = true;
+          etapa = qual;
+        });
+
+        const fechar = safe(function (qual) {
+          const id = qual === 1 ? "exitPopup" : "exitPopup2";
+          const el = $(id);
+          if (!el) return;
+          el.style.display = "none";
+          el.setAttribute("aria-hidden", "true");
+          modalAberto = false;
+          if (etapa === qual) etapa = 0;
+        });
+
+        // ---- quando clicar "Não, obrigado 😅" no modal 1 ----
+        const permitirSair = safe(function () {
+          fechar(1);
+          setTimeout(() => {
+            abrir(2); // 👉 abre o segundo modal
+          }, 300); // um pequeno delay pra transição suave
+        });
+
+        // ---- quando clicar "Sair mesmo" no modal 2 ----
+        const sairDeVerdade = safe(function () {
+          fechar(2);
+          backTrapAtiva = false;
+          janelaDeGracaAte = Date.now() + 2500;
+          history.back();
+        });
+
+        // expõe as funções pro HTML
+        window.permitirSair = permitirSair;
+        window.sairDeVerdade = sairDeVerdade;
+
+        // ---- interceptação botão voltar (mobile) ----
+        window.addEventListener(
+          "DOMContentLoaded",
+          safe(function () {
+            if (!isMobile()) return;
+
+            try {
+              history.pushState({ guard: 1 }, "");
+              history.pushState({ guard: 2 }, "");
+              backTrapAtiva = true;
+            } catch (e) {}
+
+            window.addEventListener(
+              "popstate",
+              safe(function () {
+                if (Date.now() < janelaDeGracaAte) return;
+                if (backTrapAtiva && !modalAberto) {
+                  abrir(1);
+                  try {
+                    history.pushState({ guard: 2 }, "");
+                  } catch (e) {}
+                }
+              })
+            );
+
+            // Inatividade → mostra o primeiro modal
+            let idleTimer;
+            const resetIdle = () => {
+              clearTimeout(idleTimer);
+              idleTimer = setTimeout(() => {
+                if (!modalAberto) abrir(1);
+              }, 45000);
+            };
+            ["touchstart", "scroll", "keydown", "mousemove"].forEach((evt) =>
+              window.addEventListener(evt, safe(resetIdle))
+            );
+            resetIdle();
+          })
+        );
+
+        // ---- exit intent desktop ----
+        document.addEventListener("mouseleave", (e) => {
+          if (e.clientY <= 10) abrir(1);
+        });
       })();
-
-      // 3) (Opcional) Inatividade no mobile
-      let idleTimer;
-      const resetIdle = () => {
-        clearTimeout(idleTimer);
-        idleTimer = setTimeout(mostrarPopup, 45000);
-      };
-      ["touchstart", "scroll", "keydown", "mousemove"].forEach((evt) =>
-        window.addEventListener(evt, resetIdle)
-      );
-      resetIdle();
-
-      // Observação: 'beforeunload' mostra um aviso nativo do navegador e impede modal custom.
-      // Para manter a UX limpa, não usamos aqui.
     </script>
   </body>
 </html>
