@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pitch InovaLab • Desafio Metalosa</title>
+    <meta
+      name="description"
+      content="Apresentação do Pitch InovaLab – Solução para o Desafio da empresa Metalosa."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        /* Tema Escuro Aprimorado */
+        --bg: #030712; /* Fundo mais escuro */
+        --bg2: #1f2937; /* Para o gradiente no body */
+        --card-bg: rgba(
+          17,
+          24,
+          39,
+          0.7
+        ); /* Fundo do cartão (Semi-transparente) */
+        --ink: #f9fafb; /* Cor do texto principal (quase branco) */
+        --muted: #9ca3af; /* Cor do texto secundário */
+        --brand: #2563eb; /* Azul primário (mais vibrante) */
+        --accent: #10b981; /* Verde/Ciano secundário */
+        --border: rgba(255, 255, 255, 0.1);
+        --shadow: rgba(0, 0, 0, 0.5);
+      }
+      @media (prefers-color-scheme: light) {
+        :root {
+          /* Tema Claro Aprimorado */
+          --bg: #f9fafb;
+          --bg2: #e5e7eb;
+          --card-bg: rgba(255, 255, 255, 0.85);
+          --ink: #111827;
+          --muted: #6b7280;
+          --brand: #2563eb;
+          --accent: #059669;
+          --border: rgba(0, 0, 0, 0.1);
+          --shadow: rgba(0, 0, 0, 0.1);
+        }
+      }
+
+      /* Base e Fundo */
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,
+          Cantarell, Noto Sans, Arial;
+        color: var(--ink);
+        background-color: var(--bg);
+        background-image: radial-gradient(
+          1200px 600px at 10% 0%,
+          var(--bg2),
+          transparent
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        transition: background-color 0.3s; /* Transição suave para o tema */
+      }
+      .shell {
+        max-width: 1000px;
+        width: 100%;
+        position: relative;
+      }
+
+      /* Efeito de Borda Brilhante no Container */
+      .shell::before {
+        content: "";
+        position: absolute;
+        inset: -1px;
+        z-index: -1;
+        background: conic-gradient(
+          from 180deg at 50% 50%,
+          var(--accent) 0deg,
+          var(--brand) 180deg,
+          var(--accent) 360deg
+        );
+        filter: blur(28px) opacity(0.5);
+        border-radius: 24px;
+        animation: rotate 10s linear infinite;
+      }
+
+      /* Card Principal (Glassmorphism/Cartão Moderno) */
+      .card {
+        background: var(--card-bg);
+        backdrop-filter: blur(12px); /* Efeito Glassmorphism mais intenso */
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        box-shadow: 0 16px 40px var(--shadow);
+        overflow: hidden;
+        transition: background 0.3s, border 0.3s, box-shadow 0.3s;
+      }
+
+      /* Header e Tipografia */
+      header {
+        padding: 32px 28px 12px;
+        text-align: center;
+      }
+      .kicker {
+        letter-spacing: 0.16em; /* Mais espaçado */
+        text-transform: uppercase;
+        color: var(--accent); /* Usando o accent para o kicker */
+        font-weight: 600;
+        font-size: 13px;
+      }
+      h1 {
+        margin: 8px 0 8px;
+        font-size: clamp(32px, 5vw, 48px); /* Maior e mais dinâmico */
+        line-height: 1.1;
+        font-weight: 800;
+        /* Gradiente de texto */
+        background: linear-gradient(90deg, var(--brand), var(--accent));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .sub {
+        color: var(--muted);
+        font-size: clamp(16px, 2.5vw, 18px); /* Texto de sub-cabeçalho maior */
+        margin: 0 auto 20px;
+        max-width: 700px;
+        font-weight: 400;
+      }
+
+      /* Área de Mídia */
+      .media {
+        position: relative;
+        padding: 16px 16px 24px;
+      }
+
+      /* Moldura do Vídeo (Adiciona um brilho sutil) */
+      .video-frame {
+        position: relative;
+        border-radius: 16px;
+        overflow: hidden;
+        background: #000; /* Fundo escuro para destacar o vídeo */
+        border: 1px solid var(--border);
+        box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .video-frame::after {
+        content: "";
+        position: absolute;
+        inset: -1px;
+        border-radius: 18px;
+        pointer-events: none;
+        /* Efeito de brilho sutil ao redor do vídeo */
+        background: radial-gradient(
+            600px 200px at 20% -10%,
+            rgba(37, 99, 235, 0.2),
+            transparent 40%
+          ),
+          radial-gradient(
+            700px 260px at 80% -20%,
+            rgba(16, 185, 129, 0.18),
+            transparent 50%
+          );
+      }
+
+      /* O restante do CSS do vídeo (Mantido) */
+      .video {
+        background: transparent;
+        display: block;
+      }
+      .video.landscape {
+        width: 100%;
+        height: min(72vh, 800px);
+        object-fit: contain;
+      }
+      .video.portrait {
+        height: min(78vh, 900px);
+        width: auto;
+        max-width: 100%;
+        object-fit: contain;
+      }
+
+      @media (max-width: 640px) {
+        .video.landscape {
+          height: 46vh;
+        }
+        .video.portrait {
+          height: 70vh;
+        }
+      }
+
+      /* Footer */
+      footer {
+        text-align: center;
+        color: var(--muted);
+        font-size: 13px; /* Levemente maior */
+        padding: 8px 0 24px;
+      }
+      .brand {
+        color: var(--ink);
+        font-weight: 600;
+      }
+      .dot {
+        opacity: 0.5;
+        margin: 0 8px;
+      }
+
+      /* Animação para o efeito de brilho */
+      @keyframes rotate {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Responsividade para tablet/desktop */
+      @media (min-width: 768px) {
+        header {
+          padding: 40px 40px 16px;
+        }
+        .media {
+          padding: 24px 24px 32px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <div class="card">
+        <header>
+          <div class="kicker">Apresentação</div>
+          <h1>Pitch InovaLab — Desafio Metalosa</h1>
+          <p class="sub">
+            Demonstração do <strong>VeriKit</strong>: visão computacional para
+            garantir kits corretos na linha de montagem, com alerta sonoro e
+            visual para excesso ou falta de peças.
+          </p>
+        </header>
+
+        <section class="media" aria-label="Vídeo do pitch">
+          <div class="video-frame">
+            <video
+              id="player"
+              class="video"
+              controls
+              playsinline
+              preload="metadata"
+              controlsList="nodownload"
+              poster=""
+            >
+              <source src="VeriKit.mp4" type="video/mp4" />
+              Seu navegador não suporta vídeo HTML5.
+            </video>
+          </div>
+        </section>
+
+        <script>
+          (function () {
+            const v = document.getElementById("player");
+            function applyFit() {
+              if (!v.videoWidth || !v.videoHeight) {
+                return;
+              }
+              const isPortrait = v.videoHeight > v.videoWidth;
+              v.classList.remove("portrait", "landscape");
+              v.classList.add(isPortrait ? "portrait" : "landscape");
+            }
+            v.addEventListener("loadedmetadata", applyFit);
+
+            v.addEventListener("durationchange", applyFit);
+          })();
+        </script>
+
+        <footer>
+          <span class="brand">InovaLab</span><span class="dot">•</span>Pitch de
+          solução para a
+          <strong>Metalosa</strong>
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>
