@@ -236,6 +236,64 @@
           padding: 24px 24px 32px;
         }
       }
+
+      /* Estilos para a overlay de Play */
+      .play-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 10; /* Garante que fique acima do vídeo */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(
+          3,
+          7,
+          18,
+          0.7
+        ); /* Fundo semi-transparente escuro */
+        cursor: pointer;
+        transition: opacity 0.3s;
+        pointer-events: auto; /* Permite o clique */
+      }
+
+      .play-overlay:hover {
+        background-color: rgba(
+          3,
+          7,
+          18,
+          0.5
+        ); /* Efeito sutil ao passar o mouse */
+      }
+
+      /* Esconde a overlay quando o vídeo começa a tocar (classe adicionada via JS) */
+      .play-overlay.hidden {
+        opacity: 0;
+        pointer-events: none; /* Desativa o clique quando está escondido */
+      }
+
+      .play-icon {
+        font-size: 80px;
+        color: var(--brand); /* Cor principal (azul) */
+        text-shadow: 0 0 15px rgba(37, 99, 235, 0.8); /* Brilho no ícone */
+        line-height: 1;
+        transition: transform 0.2s;
+      }
+
+      .play-overlay:hover .play-icon {
+        transform: scale(1.1); /* Ícone cresce um pouco no hover */
+      }
+
+      .play-text {
+        margin-top: 10px;
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--ink); /* Cor do texto principal */
+        letter-spacing: 0.1em;
+      }
     </style>
   </head>
   <body>
@@ -253,6 +311,9 @@
 
         <section class="media" aria-label="Vídeo do pitch">
           <div class="video-frame">
+            <div class="play-overlay" id="playOverlay">
+              <span class="play-icon">▶</span>
+            </div>
             <video
               id="player"
               class="video"
@@ -260,7 +321,7 @@
               playsinline
               preload="metadata"
               controlsList="nodownload"
-              poster=""
+              poster="https://i.postimg.cc/xCR4N2yz/Screenshot-2025-11-06-151236.png"
             >
               <source src="VeriKit.mp4" type="video/mp4" />
               Seu navegador não suporta vídeo HTML5.
@@ -271,6 +332,9 @@
         <script>
           (function () {
             const v = document.getElementById("player");
+            const overlay = document.getElementById("playOverlay"); // Referência à nova overlay
+
+            // Função para determinar se o vídeo é portrait ou landscape
             function applyFit() {
               if (!v.videoWidth || !v.videoHeight) {
                 return;
@@ -279,8 +343,34 @@
               v.classList.remove("portrait", "landscape");
               v.classList.add(isPortrait ? "portrait" : "landscape");
             }
-            v.addEventListener("loadedmetadata", applyFit);
 
+            // --- Nova Lógica para a Overlay ---
+
+            // 1. Esconde a overlay quando o vídeo inicia
+            v.addEventListener("play", () => {
+              overlay.classList.add("hidden");
+              // Se o controle 'controls' estiver visível, o play do vídeo já basta.
+            });
+
+            // 2. Mostra a overlay se o vídeo for pausado ou voltar ao início (se precisar)
+            v.addEventListener("pause", () => {
+              // Opcional: só mostra se o vídeo estiver no começo (0s)
+              if (v.currentTime <= 0.5) {
+                overlay.classList.remove("hidden");
+              }
+            });
+
+            // 3. Permite que o clique na overlay inicie a reprodução
+            overlay.addEventListener("click", () => {
+              // Verifica se o vídeo está pausado ou terminou (para evitar iniciar a cada clique)
+              if (v.paused || v.ended) {
+                v.play();
+              }
+              overlay.classList.add("hidden"); // Esconde imediatamente no clique
+            });
+
+            // --- Lógica de Fit (Existente) ---
+            v.addEventListener("loadedmetadata", applyFit);
             v.addEventListener("durationchange", applyFit);
           })();
         </script>
