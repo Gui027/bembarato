@@ -51,11 +51,14 @@
       * {
         box-sizing: border-box;
       }
-      html,
-      body {
+      html {
         height: 100%;
+        /* Permite rolagem em telas pequenas/conteúdo alto */
+        overflow-y: auto;
       }
       body {
+        /* Altura mínima de 100% da viewport, permite expandir */
+        min-height: 100vh;
         margin: 0;
         font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,
           Cantarell, Noto Sans, Arial;
@@ -66,16 +69,24 @@
           var(--bg2),
           transparent
         );
+        /* Usar 'min-height' para que o flexbox se estique no mínimo à tela */
         display: flex;
         align-items: center;
         justify-content: center;
         padding: 24px;
         transition: background-color 0.3s; /* Transição suave para o tema */
+        /* REMOVIDO: height: 100%; (substituído por min-height: 100vh;) */
       }
+
+      /* Novo estilo para garantir que o shell não seja cortado verticalmente em telas pequenas */
       .shell {
         max-width: 1000px;
         width: 100%;
         position: relative;
+        /* Garante que o shell cresça o suficiente dentro do body flexível */
+        flex-shrink: 0;
+        /* Se o conteúdo for maior que a tela, o padding do body garante a margem no topo */
+        margin: auto;
       }
 
       /* Efeito de Borda Brilhante no Container */
