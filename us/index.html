@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guilherme Rodrigues</title>
+    <link
+      rel="icon"
+      href="https://cdn-icons-png.flaticon.com/512/1828/1828640.png"
+      type="image/x-icon"
+    />
+
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=AW-17608635428"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "AW-17608635428");
+    </script>
+
+    <!-- Event snippet for Contact conversion page -->
+    <script>
+      gtag("event", "conversion", {
+        send_to: "AW-17608635428/Q4iGCLrY6qgbEKToucxB",
+        value: 0.0,
+        currency: "GBP",
+      });
+    </script>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        background: linear-gradient(180deg, #0f0f0f, #1c1c1c);
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 100vh;
+        padding: 40px 20px 40px;
+        transition: background 0.3s ease;
+      }
+
+      .profile {
+        position: relative;
+        width: 150px;
+        height: 150px;
+        margin-top: 40px;
+        margin-bottom: 20px;
+      }
+      .profile:hover {
+        transform: scale(1.1);
+      }
+      .profile img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 3px solid #00aaff;
+        box-shadow: 0 0 20px rgba(0, 170, 255, 0.5);
+        transition: box-shadow 0.3s ease, transform 0.3s ease;
+      }
+      .profile:hover img {
+        box-shadow: 0 0 30px rgba(0, 170, 255, 0.8);
+        transform: rotate(5deg);
+      }
+      .verified {
+        position: absolute;
+        bottom: 5px;
+        right: 10px;
+        background-color: #0095f6;
+        border-radius: 50%;
+        padding: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+      }
+      .verified::before {
+        content: "✔";
+        font-size: 16px;
+        color: white;
+        line-height: 1;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+        margin-top: 25px;
+        text-align: center;
+        background: linear-gradient(135deg, #00aaff, #00ffcc);
+        -webkit-background-clip: text;
+        color: transparent;
+        transition: color 0.3s ease;
+      }
+      h1:hover {
+        color: #00aaff;
+      }
+
+      p {
+        text-align: center;
+        font-size: 1rem;
+        color: #bcbcbc;
+        margin-top: 10px;
+        max-width: 300px;
+        line-height: 1.5;
+        transition: color 0.3s ease;
+      }
+      p:hover {
+        color: #fff;
+      }
+
+      .whatsapp-btn {
+        display: inline-block;
+        margin-top: 30px;
+        padding: 14px 28px;
+        border: none;
+        border-radius: 50px;
+        background: #25d366;
+        color: white;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1.1rem;
+        box-shadow: 0 0 15px rgba(37, 211, 102, 0.6);
+        transition: all 0.3s ease;
+      }
+      .whatsapp-btn:hover {
+        background: #1ebe5d;
+        transform: scale(1.05);
+        box-shadow: 0 0 25px rgba(37, 211, 102, 0.8);
+      }
+
+      footer {
+        text-align: center;
+        font-size: 0.8rem;
+        color: #777;
+        transition: color 0.3s ease;
+        margin-top: auto;
+        margin-bottom: 20px;
+      }
+      footer:hover {
+        color: #fff;
+      }
+
+      /* Carousels (unaltered) */
+      .projects-section {
+        margin-top: 60px;
+        text-align: center;
+        width: 100%;
+        max-width: 1000px;
+      }
+      .projects-section h2 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        color: #fff;
+        text-transform: uppercase;
+      }
+      .projects-carousel {
+        display: flex;
+        overflow: hidden;
+        position: relative;
+        gap: 16px;
+        animation: scrollCarousel 12s infinite linear;
+      }
+      .project-card {
+        min-width: 280px;
+        height: 180px;
+        background: #333;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        position: relative;
+      }
+      .project-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .project-card:hover {
+        transform: scale(1.05);
+        transition: transform 0.3s ease;
+      }
+      @keyframes scrollCarousel {
+        0% {
+          transform: translateX(0);
+        }
+        25% {
+          transform: translateX(-100%);
+        }
+        50% {
+          transform: translateX(-200%);
+        }
+        75% {
+          transform: translateX(-300%);
+        }
+        100% {
+          transform: translateX(-400%);
+        }
+      }
+
+      @media (max-width: 600px) {
+        body {
+          padding: 20px;
+        }
+        h1 {
+          font-size: 1.8rem;
+        }
+        p {
+          font-size: 1.2rem;
+        }
+        .whatsapp-btn {
+          padding: 12px 22px;
+          font-size: 1.4rem;
+        }
+        .projects-carousel {
+          flex-direction: column;
+          align-items: center;
+        }
+        .project-card {
+          min-width: 90%;
+          margin-bottom: 20px;
+        }
+      }
+
+      /* === POPUPS === */
+      .exit-popup {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.8);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+      }
+      .exit-popup-content {
+        background: #111;
+        border: 2px solid #00ffcc;
+        border-radius: 20px;
+        padding: 28px;
+        text-align: center;
+        max-width: 420px;
+        width: 92%;
+        box-shadow: 0 0 30px rgba(0, 255, 204, 0.6);
+        animation: pop 0.35s ease;
+      }
+      .exit-popup-content h2 {
+        font-size: 1.6rem;
+        color: #00ffcc;
+        margin-bottom: 12px;
+      }
+      .exit-popup-content p {
+        color: #fff;
+        margin: 0 auto 18px;
+        max-width: 32ch;
+      }
+      .cta {
+        display: inline-block;
+        background: #25d366;
+        color: #fff;
+        padding: 12px 22px;
+        border-radius: 28px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: transform 0.2s ease, opacity 0.2s ease;
+      }
+      .cta:hover {
+        transform: scale(1.05);
+        opacity: 0.95;
+      }
+      .close-btn {
+        margin-top: 12px;
+        background: none;
+        border: none;
+        color: #bbb;
+        cursor: pointer;
+        font-size: 0.95rem;
+      }
+      @keyframes pop {
+        from {
+          transform: scale(0.9);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      /* === MODAL 2 (Final Offer $50) === */
+      .exit-popup-content.final-offer {
+        border: 2px solid transparent;
+        background: linear-gradient(#0b0b0b, #0b0b0b) padding-box,
+          linear-gradient(135deg, #ff0066, #ffcc00) border-box; /* border neon gradient */
+        box-shadow: 0 0 40px rgba(255, 0, 102, 0.5),
+          0 0 60px rgba(255, 204, 0, 0.4);
+      }
+      .final-offer h2 {
+        color: #ffcc00;
+        font-size: 1.8rem;
+      }
+      .price-badge {
+        display: inline-block;
+        margin: 10px 0 16px;
+        padding: 8px 18px;
+        border-radius: 999px;
+        background: linear-gradient(135deg, #ff0066, #ff4d4d, #ffcc00);
+        color: #0b0b0b;
+        font-weight: 900;
+        font-size: 1.2rem;
+        text-shadow: 0 1px rgba(255, 255, 255, 0.2);
+        box-shadow: 0 6px 20px rgba(255, 0, 102, 0.5);
+        letter-spacing: 0.5px;
+      }
+      .cta-50 {
+        display: inline-block;
+        margin-top: 8px;
+        background: linear-gradient(135deg, #00ff99, #00ccff);
+        color: #0b0b0b;
+        padding: 12px 22px;
+        border-radius: 28px;
+        font-weight: 900;
+        text-decoration: none;
+        box-shadow: 0 6px 22px rgba(0, 255, 170, 0.4);
+      }
+      .cta-50:hover {
+        transform: scale(1.05);
+        opacity: 0.95;
+      }
+      .btn-ghost {
+        margin-top: 10px;
+        background: none;
+        border: 1px dashed #888;
+        color: #bbb;
+        cursor: pointer;
+        border-radius: 10px;
+        padding: 8px 14px;
+      }
+      .big-offer {
+        display: inline-block;
+        font-size: 1.8rem; /* larger than normal text */
+        color: #00ffcc; /* same neon shade used for borders */
+        text-shadow: 0 0 15px rgba(0, 255, 204, 0.8),
+          0 0 25px rgba(0, 170, 255, 0.6);
+        font-weight: 800;
+        letter-spacing: 0.5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="profile">
+      <img
+        src="https://i.postimg.cc/HLGgKCmp/539426617-18521138398025272-112389399020763288-n.jpg"
+        alt="Profile Picture"
+      />
+      <div class="verified"></div>
+    </div>
+
+    <h1>Guilherme Rodrigues</h1>
+    <p>
+      I create your website at the best price! I can clone, modernise, and get
+      everything ready quickly. Quality and economy in one place. 🚀
+    </p>
+
+    <a class="whatsapp-btn" href="https://wa.me/5527996936715" target="_blank"
+      >💬 Chat on WhatsApp</a
+    >
+
+    <footer>© 2025 - Made with 💙 by Guilherme Rodrigues</footer>
+
+    <!-- MODAL 1 -->
+    <div
+      class="exit-popup"
+      id="exitPopup"
+      aria-hidden="true"
+      role="dialog"
+      aria-labelledby="exitTitle"
+    >
+      <div class="exit-popup-content">
+        <h2 id="exitTitle">😱 Hold on!</h2>
+        <p>
+          I make your website
+          <strong>at an incredibly low price 🍌</strong>!<br />
+          Are you sure you want to leave without grabbing this offer?
+        </p>
+        <a
+          class="cta"
+          href="https://wa.me/5527996936715"
+          target="_blank"
+          rel="noopener"
+          >💬 Chat with me now!</a
+        ><br />
+        <!-- IMPORTANT: this button now opens MODAL 2 -->
+        <button class="close-btn" type="button" onclick="permitirSair()">
+          No, thank you 😅
+        </button>
+      </div>
+    </div>
+
+    <!-- MODAL 2 (Final Offer $50) -->
+    <div
+      class="exit-popup"
+      id="exitPopup2"
+      aria-hidden="true"
+      role="dialog"
+      aria-labelledby="exitTitle2"
+    >
+      <div class="exit-popup-content">
+        <h2 id="exitTitle2">🔥 Final Offer!</h2>
+        <p>
+          Last chance: <br />
+          <strong class="big-offer">COMPLETE WEBSITE for $50 🚀</strong
+          ><br /><br />
+          I deliver fast, beautifully, and optimised.<br />
+          Want to grab this offer now?
+        </p>
+        <a
+          class="cta"
+          href="https://wa.me/5527996936715?text=Hello%20Guilherme!%20I%20want%20to%20take%20the%20offer%20for%20the%20website%20for%20$50.%20Can%20we%20get%20started%3F"
+          target="_blank"
+          rel="noopener"
+          >✅ I want it for $50</a
+        >
+        <br />
+        <button class="close-btn" type="button" onclick="sairDeVerdade()">
+          Leave for real
+        </button>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        const safe =
+          (fn) =>
+          (...a) => {
+            try {
+              return fn(...a);
+            } catch (e) {}
+          };
+
+        const isMobile = () =>
+          /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|Mobile/i.test(
+            navigator.userAgent
+          ) ||
+          (window.matchMedia &&
+            window.matchMedia("(max-width: 768px)").matches);
+
+        let modalAberto = false;
+        let etapa = 0; // 0 = none, 1 = modal1, 2 = modal2
+        let backTrapAtiva = false;
+        let janelaDeGracaAte = 0;
+
+        const $ = (id) => document.getElementById(id);
+
+        // ---- open/close generic ----
+        const abrir = safe(function (qual) {
+          const id = qual === 1 ? "exitPopup" : "exitPopup2";
+          const el = $(id);
+          if (!el) return;
+          el.style.display = "flex";
+          el.setAttribute("aria-hidden", "false");
+          modalAberto = true;
+          etapa = qual;
+        });
+
+        const fechar = safe(function (qual) {
+          const id = qual === 1 ? "exitPopup" : "exitPopup2";
+          const el = $(id);
+          if (!el) return;
+          el.style.display = "none";
+          el.setAttribute("aria-hidden", "true");
+          modalAberto = false;
+          if (etapa === qual) etapa = 0;
+        });
+
+        // ---- when clicking "No, thank you 😅" in modal 1 ----
+        const permitirSair = safe(function () {
+          fechar(1);
+          setTimeout(() => {
+            abrir(2); // 👉 opens the second modal
+          }, 300); // small delay for smooth transition
+        });
+
+        // ---- when clicking "Leave for real" in modal 2 ----
+        const sairDeVerdade = safe(function () {
+          fechar(2);
+          backTrapAtiva = false;
+          janelaDeGracaAte = Date.now() + 2500;
+          history.back();
+        });
+
+        // exposes the functions for HTML
+        window.permitirSair = permitirSair;
+        window.sairDeVerdade = sairDeVerdade;
+
+        // ---- back button trap (mobile) ----
+        window.addEventListener(
+          "DOMContentLoaded",
+          safe(function () {
+            if (!isMobile()) return;
+
+            try {
+              history.pushState({ guard: 1 }, "");
+              history.pushState({ guard: 2 }, "");
+              backTrapAtiva = true;
+            } catch (e) {}
+
+            window.addEventListener(
+              "popstate",
+              safe(function () {
+                if (Date.now() < janelaDeGracaAte) return;
+                if (backTrapAtiva && !modalAberto) {
+                  abrir(1);
+                  try {
+                    history.pushState({ guard: 2 }, "");
+                  } catch (e) {}
+                }
+              })
+            );
+
+            // Inactivity → show the first modal
+            let idleTimer;
+            const resetIdle = () => {
+              clearTimeout(idleTimer);
+              idleTimer = setTimeout(() => {
+                if (!modalAberto) abrir(1);
+              }, 45000);
+            };
+            ["touchstart", "scroll", "keydown", "mousemove"].forEach((evt) =>
+              window.addEventListener(evt, safe(resetIdle))
+            );
+            resetIdle();
+          })
+        );
+
+        // ---- exit intent desktop ----
+        document.addEventListener("mouseleave", (e) => {
+          if (e.clientY <= 10) abrir(1);
+        });
+      })();
+    </script>
+    <script type="text/javascript">
+      window.smartlook ||
+        (function (d) {
+          var o = (smartlook = function () {
+              o.api.push(arguments);
+            }),
+            h = d.getElementsByTagName("head")[0];
+          var c = d.createElement("script");
+          o.api = new Array();
+          c.async = true;
+          c.type = "text/javascript";
+          c.charset = "utf-8";
+          c.src = "https://web-sdk.smartlook.com/recorder.js";
+          h.appendChild(c);
+        })(document);
+      smartlook("init", "ad0bf962865c5c97ee306d7fd19fbf88785948d4", {
+        region: "eu",
+      });
+    </script>
+  </body>
+</html>
