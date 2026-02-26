@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
@@ -71,7 +71,9 @@
         border-radius: 50%;
         border: 3px solid #00aaff;
         box-shadow: 0 0 20px rgba(0, 170, 255, 0.5);
-        transition: box-shadow 0.3s ease, transform 0.3s ease;
+        transition:
+          box-shadow 0.3s ease,
+          transform 0.3s ease;
       }
       .profile:hover img {
         box-shadow: 0 0 30px rgba(0, 170, 255, 0.8);
@@ -274,7 +276,9 @@
         border-radius: 28px;
         font-weight: 700;
         text-decoration: none;
-        transition: transform 0.2s ease, opacity 0.2s ease;
+        transition:
+          transform 0.2s ease,
+          opacity 0.2s ease;
       }
       .cta:hover {
         transform: scale(1.05);
@@ -302,9 +306,11 @@
       /* === MODAL 2 (Oferta R$50) === */
       .exit-popup-content.final-offer {
         border: 2px solid transparent;
-        background: linear-gradient(#0b0b0b, #0b0b0b) padding-box,
+        background:
+          linear-gradient(#0b0b0b, #0b0b0b) padding-box,
           linear-gradient(135deg, #ff0066, #ffcc00) border-box; /* borda neon degradê */
-        box-shadow: 0 0 40px rgba(255, 0, 102, 0.5),
+        box-shadow:
+          0 0 40px rgba(255, 0, 102, 0.5),
           0 0 60px rgba(255, 204, 0, 0.4);
       }
       .final-offer h2 {
@@ -352,7 +358,8 @@
         display: inline-block;
         font-size: 1.8rem; /* maior que o texto normal */
         color: #00ffcc; /* mesmo tom neon usado nas bordas */
-        text-shadow: 0 0 15px rgba(0, 255, 204, 0.8),
+        text-shadow:
+          0 0 15px rgba(0, 255, 204, 0.8),
           0 0 25px rgba(0, 170, 255, 0.6);
         font-weight: 800;
         letter-spacing: 0.5px;
@@ -420,7 +427,7 @@
         <h2 id="exitTitle2">🔥 Oferta Final!</h2>
         <p>
           Última chance: <br />
-          <strong class="big-offer">SITE COMPLETO por R$ 50 🚀</strong
+          <strong class="big-offer">SITE COMPLETO por R$ 500 🚀</strong
           ><br /><br />
           Eu entrego rápido, bonito e otimizado.<br />
           Quer aproveitar agora?
@@ -430,7 +437,7 @@
           href="https://wa.me/5527996936715?text=Ol%C3%A1%20Guilherme!%20Quero%20aproveitar%20a%20oferta%20de%20SITE%20por%20R%24%2050.%20Podemos%20come%C3%A7ar%3F"
           target="_blank"
           rel="noopener"
-          >✅ Quero por R$ 50</a
+          >✅ Quero por R$ 500</a
         >
         <br />
         <button class="close-btn" type="button" onclick="sairDeVerdade()">
@@ -451,7 +458,7 @@
 
         const isMobile = () =>
           /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|Mobile/i.test(
-            navigator.userAgent
+            navigator.userAgent,
           ) ||
           (window.matchMedia &&
             window.matchMedia("(max-width: 768px)").matches);
@@ -526,7 +533,7 @@
                     history.pushState({ guard: 2 }, "");
                   } catch (e) {}
                 }
-              })
+              }),
             );
 
             // Inatividade → mostra o primeiro modal
@@ -538,10 +545,10 @@
               }, 45000);
             };
             ["touchstart", "scroll", "keydown", "mousemove"].forEach((evt) =>
-              window.addEventListener(evt, safe(resetIdle))
+              window.addEventListener(evt, safe(resetIdle)),
             );
             resetIdle();
-          })
+          }),
         );
 
         // ---- exit intent desktop ----
