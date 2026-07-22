@@ -19,7 +19,7 @@
   const fallback = document.getElementById("fallback");
   const fallbackLink = document.getElementById("fallback-link");
   const reloadButton = document.getElementById("reload-button");
-  const cameraLabel = document.getElementById("camera-label");
+  const cameraLink = document.getElementById("camera-link");
 
   function setStatus(kind, label) {
     status.classList.remove("is-online", "is-offline");
@@ -28,9 +28,11 @@
   }
 
   function loadStream() {
-    cameraLabel.textContent = streamName;
     fallback.hidden = true;
     fallbackLink.href = streamUrl;
+    if (cameraLink) {
+      cameraLink.href = streamUrl;
+    }
     frame.src = `${streamUrl}&t=${Date.now()}`;
     setStatus("", "Conectando");
 
@@ -40,6 +42,7 @@
   async function checkStream() {
     if (!canProbeApi) {
       setStatus("is-online", "Ao vivo");
+      fallback.hidden = true;
       return;
     }
 

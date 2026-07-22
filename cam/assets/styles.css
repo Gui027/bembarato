@@ -154,6 +154,15 @@ h1 {
   font-size: 13px;
 }
 
+.footer a {
+  color: #9ed8ff;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
 .footer button {
   min-width: 94px;
   min-height: 36px;

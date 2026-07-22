@@ -11,8 +11,8 @@
       window.location.replace("/cam/" + window.location.search + window.location.hash);
     }
   </script>
-  <link rel="stylesheet" href="/cam/assets/styles.css">
-  <script src="/cam/config.js"></script>
+  <link rel="stylesheet" href="/cam/assets/styles.css?v=20260722-2">
+  <script src="/cam/config.js?v=20260722-2"></script>
 </head>
 <body>
   <main class="camera-shell">
@@ -31,22 +31,23 @@
       <iframe
         id="camera-frame"
         title="Camera ao vivo"
-        allow="autoplay; fullscreen; picture-in-picture"
+        allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
+        loading="eager"
         referrerpolicy="no-referrer"
       ></iframe>
       <div class="fallback" id="fallback" hidden>
         <h2>Stream indisponivel</h2>
-        <p>O site carregou, mas o endpoint publico /cam-live ainda nao respondeu.</p>
+        <p>O site carregou, mas a transmissao ainda nao respondeu dentro da pagina.</p>
         <a id="fallback-link" href="#" target="_blank" rel="noopener">Abrir transmissao</a>
       </div>
     </section>
 
     <footer class="footer">
-      <span id="camera-label">camera_xmeye_h264</span>
+      <a id="camera-link" href="#" target="_blank" rel="noopener">Abrir transmissao</a>
       <button type="button" id="reload-button">Atualizar</button>
     </footer>
   </main>
 
-  <script src="/cam/assets/app.js"></script>
+  <script src="/cam/assets/app.js?v=20260722-2"></script>
 </body>
 </html>
