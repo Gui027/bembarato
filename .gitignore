@@ -1,0 +1,4 @@
+cam/scripts/camera.local.ps1
+cam/tools/
+cam/*.log
+cam/tmp/
