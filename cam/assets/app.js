@@ -5,6 +5,13 @@
   const baseUrl = (isLocalHost ? config.localBaseUrl : config.publicBaseUrl || config.localBaseUrl || "").replace(/\/$/, "");
   const streamUrl = `${baseUrl}/stream.html?src=${encodeURIComponent(streamName)}`;
   const probeUrl = `${baseUrl}/api/streams`;
+  const canProbeApi = (() => {
+    try {
+      return new URL(baseUrl).origin === window.location.origin || isLocalHost;
+    } catch (error) {
+      return false;
+    }
+  })();
 
   const frame = document.getElementById("camera-frame");
   const status = document.getElementById("status");
@@ -27,10 +34,15 @@
     frame.src = `${streamUrl}&t=${Date.now()}`;
     setStatus("", "Conectando");
 
-    window.setTimeout(checkStream, 1800);
+    window.setTimeout(checkStream, 2500);
   }
 
   async function checkStream() {
+    if (!canProbeApi) {
+      setStatus("is-online", "Ao vivo");
+      return;
+    }
+
     try {
       const response = await fetch(probeUrl, { cache: "no-store", mode: "cors" });
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
@@ -51,6 +63,9 @@
   }
 
   reloadButton.addEventListener("click", loadStream);
+  frame.addEventListener("load", () => setStatus("is-online", "Ao vivo"));
   loadStream();
-  window.setInterval(checkStream, 15000);
+  if (canProbeApi) {
+    window.setInterval(checkStream, 15000);
+  }
 })();

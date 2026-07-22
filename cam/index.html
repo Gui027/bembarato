@@ -6,8 +6,13 @@
   <title>Camera ao vivo | Bem Barato</title>
   <meta name="description" content="Transmissao ao vivo da camera Bem Barato.">
   <link rel="preconnect" href="https://bembarato.shop">
-  <link rel="stylesheet" href="./assets/styles.css">
-  <script src="./config.js"></script>
+  <script>
+    if (window.location.pathname === "/cam") {
+      window.location.replace("/cam/" + window.location.search + window.location.hash);
+    }
+  </script>
+  <link rel="stylesheet" href="/cam/assets/styles.css">
+  <script src="/cam/config.js"></script>
 </head>
 <body>
   <main class="camera-shell">
@@ -31,7 +36,7 @@
       ></iframe>
       <div class="fallback" id="fallback" hidden>
         <h2>Stream indisponivel</h2>
-        <p>O site carregou, mas o endpoint publico da camera ainda nao respondeu.</p>
+        <p>O site carregou, mas o endpoint publico /cam-live ainda nao respondeu.</p>
         <a id="fallback-link" href="#" target="_blank" rel="noopener">Abrir transmissao</a>
       </div>
     </section>
@@ -42,6 +47,6 @@
     </footer>
   </main>
 
-  <script src="./assets/app.js"></script>
+  <script src="/cam/assets/app.js"></script>
 </body>
 </html>
