@@ -1,0 +1,31 @@
+NEURO-JITSU — REDESIGN DE ALTA CONVERSÃO
+
+COMO ABRIR
+Abra o arquivo index.html no navegador. A página é responsiva e funciona em computador e celular.
+
+O QUE FOI MELHORADO
+• Promessa principal mais direta, com o problema e o mecanismo do produto na primeira dobra.
+• Botão de ação visível cedo e repetido nos principais momentos de decisão.
+• Prova social antecipada, reduzida e organizada por resultado percebido no tatame.
+• Explicação do método transformada em uma sequência visual: fundamentos, conceitos, leitura, decisão e ação.
+• Conteúdo do curso organizado em blocos curtos e escaneáveis.
+• Planos anual e vitalício comparáveis sem excesso de texto.
+• Garantia, pagamento, acesso e suporte posicionados perto da oferta.
+• FAQ compactado para tratar as principais objeções.
+• CTA fixo no celular para reduzir a distância até a compra.
+• Fotos, depoimentos, vídeos, professores e links de checkout do site original preservados.
+
+DIAGNÓSTICO DO SITE ANTERIOR
+• A página tinha bons ativos e muita prova, mas o excesso de blocos, repetições e textos longos diluía a decisão.
+• A oferta demorava para aparecer e exigia muito esforço de leitura antes da compra.
+• Depoimentos semelhantes competiam entre si, em vez de construir uma narrativa progressiva.
+• O mecanismo único do Neuro-Jitsu estava espalhado por muitas seções e perdia força.
+• A nova versão concentra a jornada em: promessa → dor → prova → mecanismo → conteúdo → autoridade → oferta → garantia → objeções.
+
+ARQUIVOS
+• index.html — estrutura e conteúdo
+• styles.css — design responsivo
+• script.js — animações, FAQ e ampliação dos depoimentos
+• assets/ — imagens reutilizadas do site atual
+
+Observação: os vídeos permanecem incorporados do YouTube e, por isso, precisam de internet para carregar.
