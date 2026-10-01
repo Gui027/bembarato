@@ -15,6 +15,17 @@ $html = $response.Content
 # Remove remote executable code, analytics and hydration data. The rendered HTML is complete.
 $html = [regex]::Replace($html, '<script\b[^>]*>[\s\S]*?</script>', '', 'IgnoreCase')
 
+# Some static hosts serve directory indexes without redirecting /cuidados to
+# /cuidados/. Normalize the URL before the browser resolves relative assets.
+$pathNormalization = @'
+<script>
+if (!location.pathname.endsWith('/') && !/\.[^/]+$/.test(location.pathname)) {
+  history.replaceState(null, '', location.pathname + '/' + location.search + location.hash);
+}
+</script>
+'@
+$html = $html.Replace('</title>', ("</title>`n" + $pathNormalization))
+
 $styles = @{
   '/assets/index-JyLwpdcb.css' = 'index.css'
   '/assets/PaginaRenderer-B-1YoJeS.css' = 'pagina.css'
