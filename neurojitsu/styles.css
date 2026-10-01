@@ -1657,7 +1657,7 @@ h2 em {
   display: flex;
   align-items: center;
   will-change: transform;
-  animation: ticker-scroll 44s linear infinite;
+  animation: ticker-scroll 132s linear infinite;
 }
 .concept-group {
   flex: 0 0 auto;
@@ -2130,5 +2130,25 @@ summary:focus-visible {
   .testimonial,
   .compare-item img {
     transition: none;
+  }
+}
+
+@media (min-width: 951px) {
+  .problem-grid {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .problem-grid h2 {
+    font-size: clamp(2.6rem, 3.9vw, 4.1rem);
+    line-height: 1;
+  }
+  .problem-copy {
+    padding-top: 0;
+    font-size: 1.2rem;
+    line-height: 1.7;
+  }
+  .problem-copy p {
+    margin-bottom: 28px;
   }
 }
