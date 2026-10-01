@@ -2196,4 +2196,19 @@ summary:focus-visible {
     gap: 20px;
     padding-bottom: 88px;
   }
+  .footer-info {
+    display: contents;
+  }
+  footer .brand {
+    order: 0;
+  }
+  .footer-info p {
+    order: 1;
+  }
+  footer > a:last-child {
+    order: 2;
+  }
+  .dev-credit {
+    order: 3;
+  }
 }
