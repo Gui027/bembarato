@@ -2152,3 +2152,41 @@ summary:focus-visible {
     margin-bottom: 28px;
   }
 }
+
+.dev-credit {
+  padding: 18px 24px 22px;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 8px;
+  background: #050304;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.74rem;
+  letter-spacing: 0.04em;
+}
+.dev-credit a {
+  font-family: var(--display);
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  text-decoration: none;
+  transition: filter 0.2s ease;
+}
+.dev-credit-dev {
+  color: #f4efe9;
+}
+.dev-credit-name {
+  background: linear-gradient(100deg, #b51d2c, #ed3548);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.dev-credit a:hover {
+  filter: brightness(1.25);
+}
+@media (max-width: 950px) {
+  .dev-credit {
+    padding-bottom: 96px;
+  }
+}
